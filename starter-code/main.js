@@ -4,52 +4,34 @@ var width = ctx.canvas.width;
 var height = ctx.canvas.height;
 
 var score = 0;
+var enemies = [];
 
-var speed=0;
-
-player = new Component()
-// function draw(player) {
-//     ctx.fillStyle = "red";
-//     ctx.fillRect(player.x,player.y, 20, 30)
-//   }
+var player;
+var enemy1;
+var interval;
 
 document.onkeydown = function(e) {
     switch (e.keyCode) {
-        case 38: player.moveUp();    console.log('up',    player); break;
-        case 40: player.moveDown();  console.log('down',  player); break;
         case 37: player.moveLeft();  console.log('left',  player); break;
         case 39: player.moveRight(); console.log('right', player); break;
     }
-    updateCanvas();
+}
+
+window.onload = function(){
+    player = new Player(ctx);
+    enemy1 = new Enemy(10,30,"yellowgreen",230,10, ctx);
+    interval = setInterval(updateCanvas,1000/50);
 }
 
 
 // ctx.fillRect(230,10,20,30)
 
 function updateCanvas(){
-    ctx.clearRect(0,0,300,600);
-    draw(player)
-    window.requestAnimationFrame(updateCanvas);
+    ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
+    enemy1.fall()
+    enemy1.drawEnemy();
+    player.draw();
 }
-
-window.requestAnimationFrame(updateCanvas);
-
-var speed = 0;
-
-var enemies = [];
-function clearCanvas(){
-    ctx.clearRect(0,0,700,700)
-}
-
-
-function updateEnemy (){
-    speed += 3
-    clearCanvas();
-    ctx.fillStyle = "yellowgreen"
-    ctx.fillRect(100,speed,20,30)
-    window.requestAnimationFrame(updateEnemy);
-}
-window.requestAnimationFrame(updateEnemy);
 
 // var yodaImg = new Image();
 // yodaImg.onload = drawYoda;
@@ -58,9 +40,4 @@ window.requestAnimationFrame(updateEnemy);
 //   ctx.drawImage(this, 230, 10);
 // }
 
-// var cloneImg = new Image();
-// cloneImg.onload = drawClone;
-// cloneImg.src = 'images/stormtrooper.png'
-// function drawClone(){
-//     ctx.drawImage(this,130,550)
-// }
+
