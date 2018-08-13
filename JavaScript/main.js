@@ -4,11 +4,12 @@ var width = ctx.canvas.width;
 var height = ctx.canvas.height;
 
 var score = 0;
-var enemies = [];
+var enemy = [];
 
 var player;
-var enemy1;
+var enemyNew;
 var interval;
+var start
 
 document.onkeydown = function(e) {
     switch (e.keyCode) {
@@ -19,7 +20,8 @@ document.onkeydown = function(e) {
 
 window.onload = function(){
     player = new Player(ctx);
-    enemy1 = new Enemy(10,30,"yellowgreen",230,10, ctx);
+    enemyNew = new Enemy(10,30,"yellowgreen",230,start, ctx);
+    enemyNew.start = 10;
     interval = setInterval(updateCanvas,1000/50);
 }
 
@@ -28,12 +30,9 @@ window.onload = function(){
 
 function updateCanvas(){
     ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
-    enemy1.fall()
-    if(enemy1.y > 300){
-        var enemy2 = new Enemy(20,30,"yellowgreen",50,10, ctx)
-        enemy2.drawEnemy()
-    }
-    enemy1.drawEnemy();
+    enemyNew.fall()
+    ctx.save()
+    enemyNew.drawEnemy();
     player.draw();
 }
 
