@@ -1,4 +1,11 @@
+body {
+    background: black;
+}
+
 canvas {
-    border: greenyellow solid 5px;
-    background: green
+    border: black solid 1px;
+    background: white;
+}
+h1 {
+    color: red;
 }
