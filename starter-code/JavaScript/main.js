@@ -10,6 +10,7 @@ var interval;
 var start;
 var counter = 0;
 
+
 document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37: player.moveLeft(); break;
@@ -21,46 +22,60 @@ window.onload = function(){
     player = new Player(ctx);
     // enemyNew = new Enemy(100,100,"yellowgreen",x,0,ctx);
     // for(var i = 0; i < enemies.length; i++ ){
-    //     if (enemies.length < 5){
-    //     }
-    //     else
-    //     console.log("stop")
-    // }
-    interval = setInterval(updateCanvas, 1000/30);
-}
-
-
-// ctx.fillRect(230,10,20,30)
-
-function updateCanvas(){
-    ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
-    counter++;
-    if (counter%12===0){
-        var randomNumber = Math.random()*(300-1)+1;
-        if(enemies.length > 9){
-            enemies.shift()
-            enemies.shift()
-            enemies.shift()
-            enemies.shift()
-            
-            
-            // enemies.push(new Enemy(0,0,"yellowgreen",randomNumber,0,ctx))
-        } 
-        else {
-            enemies.push(new Enemy(0,0,"yellowgreen",randomNumber,0,ctx))
+        //     if (enemies.length < 5){
+            //     }
+            //     else
+            //     console.log("stop")
+            // }
+            interval = setInterval(updateCanvas, 1000/30);
         }
+        
+        
+        // ctx.fillRect(230,10,20,30)
+        
+        function updateCanvas(){
+            ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
+            counter++;
+            if (counter%12===0){
+                var randomNumber = Math.random()*(300-1)+1;
+                if(enemies.length > 9){
+                    enemies.shift()
+                    enemies.shift()
+                    enemies.shift()
+                    enemies.shift()
+                    
+                    
+                    // enemies.push(new Enemy(0,0,"yellowgreen",randomNumber,0,ctx))
+                } 
+                else {
+                    enemies.push(new Enemy(0,0,"yellowgreen",randomNumber,0,ctx))
+                }
+            }
+            for(var i = 0; i < enemies.length; i++ ){
+                enemies[i].fall();
+                enemies[i].drawEnemy();
+            }
+            //ctx.save()
+            player.draw();
+            
+            function stop() {
+                clearInterval(this.interval);
+            }
+            ctx.strokeStyle = "red";
+            ctx.beginPath();
+            ctx.moveTo(0,570);
+            ctx.lineTo(300,570);
+            ctx.stroke();
+            ctx.closePath();
         }
-    for(var i = 0; i < enemies.length; i++ ){
-        enemies[i].fall();
-        enemies[i].drawEnemy();
+        
+function collisionDetection(){
+    for (var i = 0; i < enemies.length; i++){
+        if (enemies[i].x = 570){
+
+        }
+                
     }
-    //ctx.save()
-    player.draw();
-
-    function stop() {
-        clearInterval(this.interval);
-      }
-    
 }
 
 // var yodaImg = new Image();
