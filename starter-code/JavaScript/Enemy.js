@@ -8,12 +8,13 @@ function Enemy(width, height, color, x, y, ctx) {
     this.ctx.fillStyle = color;
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
     this.fall = function(){
-        this.speed += 6;
+        this.speed += 3;
         this.y = this.speed;
-        }
+        this.drawEnemy();
+    }
 
     this.drawEnemy = function() {
-         ctx.fillStyle = "yellowgreen";
-         ctx.fillRect(this.x, this.y, 20, 30);
+        ctx.fillStyle = "yellowgreen";
+        ctx.fillRect(this.x, this.y, 20, 30);
     }
 }

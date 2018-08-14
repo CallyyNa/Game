@@ -1,5 +1,5 @@
 body {
-    background-image: url("images/starwars.png");
+    background-image: url("JavaScript/images/starwars.png");
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -7,6 +7,39 @@ body {
 .container {
     display: flex;
     justify-content: center;
+    margin-right: 30%
+}
+
+.row1 {
+    margin-top:40px;
+    color: yellow;
+    font-family: Arial;
+    text-align: center;
+    background: rgba(9, 5, 29,0.8);
+    width: 300px;
+}
+
+.row1 > h4 {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+button {
+    border: solid 2px yellow;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 14px;
+    background: rgba(9, 5, 29,0.8); 
+    color: yellow;
+}
+
+button:hover {
+    background: yellow;
+    color: rgba(9, 5, 29,0.8);
+}
+
+.row {
+    margin-left: 60px;
 }
 
 canvas {
@@ -15,6 +48,3 @@ canvas {
     margin-top: 40px;
 }
 
-h1 {
-    color: red;
-}

@@ -1,8 +1,7 @@
-function Player(ctx) {
-    this.x = 130;
-    this.y = 550;
-    this.moveLeft = function() { this.x -= 20 };
-    this.moveRight = function() { this.x += 20 };
+function Bullet(ctx) {
+    this.x = player.x;
+    this.y = player.y;
+    this.shoot = function() { this.y++};
     this.ctx = ctx;
     this.draw = function() {
         this.ctx.fillStyle = "red";

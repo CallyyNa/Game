@@ -8,6 +8,13 @@ function Player(ctx) {
         this.ctx.fillStyle = "red";
         this.ctx.fillRect(this.x,this.y, 20, 30)
       }
+    this.checkIfCollision = function(enemies){
+        if(enemies.y >=550){
+            console.log("collision")
+            ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
+        }
+    }
+    
     }
 
 // var cloneImg = new Image();
