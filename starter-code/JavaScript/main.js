@@ -8,6 +8,7 @@ var score = 0;
 var enemies = [];
 var player;
 var interval;
+var bulletsShoot;
 var start;
 var counter = 0;
 var bullets = [];
@@ -17,9 +18,11 @@ document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37: player.moveLeft(); break;
         case 39: player.moveRight(); break;
-        case
+        case 32: Bullet.shoot(); break;
     }
 }
+
+
 
 window.onload = function(){
     player = new Player(ctx);
@@ -42,18 +45,25 @@ function updateCanvas(){
                 enemies[i].drawEnemy();
                 player.checkIfCollision(enemies[i]);
             }
+
+            bullets.push(new Bullet(ctx));
+            console.log(bullets)
+
+            // if(bullets[0].shoot)
+            for(var j=0; j > bullets.length; j++){
+                bullets[i].fly();
+                bullets[i].drawBullets();
+                bullets[i].checkifShot(enemies[i])
+            }
+
             player.draw();
-            
-            // function stop() {
-            //     clearInterval(this.interval);
-            // }
+
             ctx.strokeStyle = "red";
             ctx.beginPath();
             ctx.moveTo(0,570);
             ctx.lineTo(300,570);
             ctx.stroke();
             ctx.closePath();
-
     
     }
 
