@@ -9,10 +9,3 @@ function Player(ctx) {
         this.ctx.fillRect(this.x,this.y, 20, 30)
       }
     }
-
-// var cloneImg = new Image();
-// cloneImg.onload = drawClone;
-// cloneImg.src = 'images/stormtrooper.png'
-// function drawClone(){
-//     ctx.drawImage(this,130,550)
-// }
