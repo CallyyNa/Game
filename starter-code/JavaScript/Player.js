@@ -10,9 +10,9 @@ function Player(ctx) {
         this.ctx.fillRect(this.x,this.y, 20, 30)
       }
 
-    this.checkIfCollision = function(){
+    this.checkIfCollision = function(enemies){
         if(enemies.y >=550){
-            console.log("collision")
+            
             ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
         }
     }

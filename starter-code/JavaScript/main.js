@@ -18,11 +18,15 @@ document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37: player.moveLeft(); break;
         case 39: player.moveRight(); break;
-        case 32: Bullet.shoot(); break;
+        case 38:  createBullets();break;
     }
 }
 
+createBullets = function(){
+    bullets.push(new Bullet(ctx))    
+    console.log(bullets)
 
+}
 
 window.onload = function(){
     player = new Player(ctx);
@@ -46,22 +50,32 @@ function updateCanvas(){
                 player.checkIfCollision(enemies[i]);
             }
 
-            bullets.push(new Bullet(ctx));
-            console.log(bullets)
+            // bullets.push(new Bullet(ctx));
+            // console.log(bullets)
 
-            // if(bullets[0].shoot)
-            for(var j=0; j > bullets.length; j++){
-                bullets[i].fly();
-                bullets[i].drawBullets();
-                bullets[i].checkifShot(enemies[i])
+        if(bullets.length  >= 0){
+
+            for(var j=0; j < bullets.length; j++){
+                bullets[j].updatePos();
+                if(bullets[j].checkIfShot(enemies)=== true){
+                    
+                }
+                bullets[j].drawBullet();
             }
-
-            player.draw();
-
+        }   
+    player.draw();
+    
             ctx.strokeStyle = "red";
             ctx.beginPath();
             ctx.moveTo(0,570);
             ctx.lineTo(300,570);
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.strokeStyle = "red";
+            ctx.beginPath();
+            ctx.moveTo(0,20);
+            ctx.lineTo(300,20);
             ctx.stroke();
             ctx.closePath();
     

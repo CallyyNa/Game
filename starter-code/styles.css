@@ -19,11 +19,6 @@ body {
     width: 300px;
 }
 
-.row1 > h4 {
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
 button {
     border: solid 2px yellow;
     border-radius: 8px;
@@ -38,8 +33,9 @@ button:hover {
     color: rgba(9, 5, 29,0.8);
 }
 
-.row {
+.row2 {
     margin-left: 60px;
+    margin-right: 60px;
 }
 
 canvas {
@@ -48,3 +44,6 @@ canvas {
     margin-top: 40px;
 }
 
+h4 {
+    color: rgb(57, 103, 202);
+}

@@ -7,6 +7,7 @@ function Enemy(width, height, color, x, y, ctx) {
     this.ctx = ctx;
     this.ctx.fillStyle = color;
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    
     this.fall = function(){
         this.speed += 3;
         this.y = this.speed;
