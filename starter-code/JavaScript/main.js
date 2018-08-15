@@ -18,14 +18,13 @@ document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37: player.moveLeft(); break;
         case 39: player.moveRight(); break;
-        case 38:  createBullets();break;
+        case 89:  createBullets();break;
     }
 }
 
 createBullets = function(){
     bullets.push(new Bullet(ctx))    
     console.log(bullets)
-
 }
 
 window.onload = function(){
@@ -34,52 +33,53 @@ window.onload = function(){
 }
     
 function updateCanvas(){
-            ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
-            counter++;
-            if(enemies.length > 0 && enemies[0].y >= 600){
-                enemies.splice(0, 1)
-            } 
-            if (counter%40===0){
-                var randomNumber = Math.random()*(280-1)+1;
-                enemies.push(new Enemy(0,0,"yellowgreen",randomNumber,0,ctx))
-            }
-
-            for(var i = 0; i < enemies.length; i++ ){
-                enemies[i].fall();
-                enemies[i].drawEnemy();
-                player.checkIfCollision(enemies[i]);
-            }
-
-            // bullets.push(new Bullet(ctx));
-            // console.log(bullets)
-
-        if(bullets.length  >= 0){
-
+    ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
+    for(var i = 0; i < enemies.length; i++ ){
+        if(enemies[i].checkCollision(player)){
+            enemies.splice(i,1)
+            score--
+        }
+        enemies[i].fall();
+        enemies[i].drawEnemy();
+        if(bullets.length > 0){
             for(var j=0; j < bullets.length; j++){
-                bullets[j].updatePos();
-                if(bullets[j].checkIfShot(enemies)=== true){
-                    
+                if(enemies[i].checkCollision(bullets[j])){
+                    enemies.splice(i,1)
+                    bullets.splice(j,1);
+                    // clearInterval(interval)
+                    console.log("enemy touch gunshot")
                 }
-                bullets[j].drawBullet();
             }
-        }   
-    player.draw();
-    
-            ctx.strokeStyle = "red";
-            ctx.beginPath();
-            ctx.moveTo(0,570);
-            ctx.lineTo(300,570);
-            ctx.stroke();
-            ctx.closePath();
-
-            ctx.strokeStyle = "red";
-            ctx.beginPath();
-            ctx.moveTo(0,20);
-            ctx.lineTo(300,20);
-            ctx.stroke();
-            ctx.closePath();
-    
+        }
     }
+    counter++;
+    if(bullets.length > 0 && bullets[0].y <= 0){
+        bullets.splice(0,1)
+    }
+    if(enemies.length > 0 && enemies[0].y >= 550){
+        enemies.splice(0, 1)
+    } 
+    if (counter%40===0){
+        var randomNumber = Math.random()*(280-1)+1;
+        enemies.push(new Enemy(20,30,"yellowgreen",randomNumber,0,ctx))
+    }
+
+
+    for(var j=0; j < bullets.length; j++){        
+        bullets[j].updatePos();
+        bullets[j].drawBullet();
+    }
+    // bullets.push(new Bullet(ctx));
+    // console.log(bullets) 
+    player.onload();
+
+    ctx.strokeStyle = "red";
+    ctx.beginPath();
+    ctx.moveTo(0,570);
+    ctx.lineTo(300,570);
+    ctx.stroke();
+    ctx.closePath();
+}
 
 
 // var yodaImg = new Image();

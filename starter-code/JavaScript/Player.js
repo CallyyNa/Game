@@ -1,22 +1,17 @@
 function Player(ctx) {
     this.x = 130;
     this.y = 550;
+    this.width = 20;
+    this.height = 30;
     this.moveLeft = function() { this.x -= 20 };
     this.moveRight = function() { this.x += 20 };
     this.ctx = ctx;
 
-    this.draw = function() {
-        this.ctx.fillStyle = "red";
-        this.ctx.fillRect(this.x,this.y, 20, 30)
-      }
-
-    this.checkIfCollision = function(enemies){
-        if(enemies.y >=550){
-            
-            ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
-        }
+    this.img1 = new Image();
+    this.img1.onload = function() {
+        this.ctx.drawImage(img1,this.x,this.y, this.width, this.height)
     }
-
+    this.img1.src = "images/hansolo.png"
 }
 
 // var cloneImg = new Image();

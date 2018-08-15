@@ -16,6 +16,21 @@ function Enemy(width, height, color, x, y, ctx) {
 
     this.drawEnemy = function() {
         ctx.fillStyle = "yellowgreen";
-        ctx.fillRect(this.x, this.y, 20, 30);
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    this.checkCollision = function(otherobj){
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + (otherobj.width);
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + (otherobj.height);
+        var crash = true;
+        if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+            crash = false;
+        }
+        return crash;
     }
 }
