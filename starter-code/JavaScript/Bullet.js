@@ -6,7 +6,7 @@ function Bullet(ctx) {
     this.ctx = ctx;
 
     this.drawBullet = function() {
-        this.ctx.fillStyle = "blue";
+        this.ctx.fillStyle = "red";
         this.ctx.fillRect(this.x,this.y,this.width, this.height)
       }
     

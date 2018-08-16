@@ -1,17 +1,18 @@
 function Player(ctx) {
     this.x = 130;
     this.y = 550;
-    this.width = 20;
-    this.height = 30;
+    this.width = 25;
+    this.height = 45;
     this.moveLeft = function() { this.x -= 20 };
     this.moveRight = function() { this.x += 20 };
     this.ctx = ctx;
 
     this.img1 = new Image();
-    this.img1.onload = function() {
-        this.ctx.drawImage(img1,this.x,this.y, this.width, this.height)
+    this.img1.src = "JavaScript/images/princessleia.png"
+    
+    this.drawPlayer = function() {
+        this.ctx.drawImage(this.img1, this.x, this.y, this.width, this.height)
     }
-    this.img1.src = "images/hansolo.png"
 }
 
 // var cloneImg = new Image();
