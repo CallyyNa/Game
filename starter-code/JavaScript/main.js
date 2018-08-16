@@ -12,8 +12,7 @@ var start;
 var counter = 0;
 var bullets = [];
 var lives = 3;
-var x = 40;
-
+var x = 40
 
 document.onkeydown = function(e) {
     switch (e.keyCode) {
@@ -43,22 +42,22 @@ drawLives = function() {
 window.onload = function(){
     player = new Player(ctx);
     interval = setInterval(updateCanvas, 1000/30);
-    enemies;
-    score = new Text("30px", "Consolas", "white", 0, 0, "text");
 }
-console.log(score)
 
 function updateCanvas(){
     ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
     for(var i = 0; i < enemies.length; i++ ){
-        if(enemies[i].checkCollision(player) || enemies[i].y >= 570){
+        if(enemies[i].checkCollision(player)){
             enemies.splice(i,1)
-            score--
             lives--
         }
-        if (enemies[i].y > 570){
-            lives--;
-        }
+
+
+        if (enemies[i].y >= 540 ){
+            lives -= 0.3333333
+            console.log("out of the line")
+            // lives = lives -1 ;
+        }else {console.log("untouched")}
         enemies[i].fall();
         enemies[i].drawEnemy();
         if(bullets.length > 0){
@@ -110,7 +109,7 @@ function updateCanvas(){
 
     drawScore();
     drawLives();
-    checkLineHit(enemies)
+    
 }
 
 
