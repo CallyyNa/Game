@@ -57,7 +57,7 @@ function updateCanvas(){
             lives -= 0.3333333
             console.log("out of the line")
             // lives = lives -1 ;
-        }else {console.log("untouched")}
+        }
         enemies[i].fall();
         enemies[i].drawEnemy();
         if(bullets.length > 0){
@@ -70,6 +70,8 @@ function updateCanvas(){
             }
         }
     }
+
+    player.checkBorder(canvas)
 
     if (lives <=0){
         window.confirm("You didn't defend the galaxy. You lost! Please refresh page to start over.");

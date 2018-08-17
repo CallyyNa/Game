@@ -13,6 +13,16 @@ function Player(ctx) {
     this.drawPlayer = function() {
         this.ctx.drawImage(this.img1, this.x, this.y, this.width, this.height)
     }
+
+    this.checkBorder = function(otherobj){
+       if((this.x + this.width) >= 300){
+           this.x = 280;
+       }
+       else if((this.x) <= 0){
+           this.x= 0;
+       }
+        
+    }
 }
 
 // var cloneImg = new Image();
