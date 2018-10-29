@@ -26,3 +26,6 @@ $ git clone https://github.com/CallyyNa/Game.git
 
 Without having to install any dependencies you can just start the application. If you are using Visual Studio Code, I recommend the Live Server extension.
 
+## Artworks
+The characters that I used for my game were created by the artist Sithjester. Website: http://untamed.wild-refuge.net/rpgxp.php
+
